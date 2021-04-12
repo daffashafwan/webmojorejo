@@ -15,6 +15,10 @@ class CreatePerangkatsTable extends Migration
     {
         Schema::create('perangkats', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_perangkat');
+            $table->string('jabatan');
+            $table->string('masa_jabatan');
+            $table->string('foto');
             $table->timestamps();
         });
     }
