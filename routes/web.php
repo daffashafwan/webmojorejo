@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController as FrontController;
 use App\Http\Controllers\Admin\AdminController as AdminController;
 
 /*
@@ -14,9 +15,7 @@ use App\Http\Controllers\Admin\AdminController as AdminController;
 |
 */
 
-// Route::get('/admin', function () {
-//     return view('welcome');
-// });
+Route::get('/', [FrontController::class, 'index'])->name('index');
 
 Route::prefix('admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
