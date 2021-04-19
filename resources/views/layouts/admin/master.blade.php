@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
         <link rel="stylesheet" id="css-main" href="{{asset('assets/admin/css/oneui.min.css')}}">
 
+        @yield('css')
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
         <!-- END Stylesheets -->
@@ -189,7 +190,7 @@
                             </a>
                             <ul class="nav-main-submenu">
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link" href="be_forms_elements.html">
+                                <a class="nav-main-link" href="{{route('admin.berita.index')}}">
                                         <span class="nav-main-link-name">Kelola Berita</span>
                                     </a>
                                 </li>
@@ -434,6 +435,7 @@
             assets/js/core/jquery.appear.min.js
             assets/js/core/js.cookie.min.js
         -->
+        
         <script src="{{asset('assets/admin/js/oneui.core.min.js')}}"></script>
 
         <!--
@@ -449,5 +451,6 @@
 
         <!-- Page JS Code -->
         <script src="{{asset('assets/admin/js/pages/be_pages_dashboard.min.js')}}"></script>
+        @yield('script')
     </body>
 </html>

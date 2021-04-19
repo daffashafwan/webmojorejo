@@ -18,4 +18,7 @@ use App\Http\Controllers\Admin\AdminController as AdminController;
 //     return view('welcome');
 // });
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::prefix('admin')->group(function(){
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/berita', [AdminController::class, 'berita'])->name('admin.berita.index');
+});
