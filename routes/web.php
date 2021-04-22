@@ -19,5 +19,9 @@ Route::get('/', [FrontController::class, 'index'])->name('index');
 
 Route::prefix('admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/berita', [AdminController::class, 'berita'])->name('admin.berita.index');
+    Route::prefix('berita')->group(function(){
+        Route::get('/', [AdminController::class, 'berita'])->name('admin.berita.index');
+        Route::get('/tambah-berita', [AdminController::class, 'tambahBerita'])->name('admin.berita.tambah');
+    });
+    
 });

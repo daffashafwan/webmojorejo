@@ -8,10 +8,14 @@
 <!-- Dynamic Table Full Pagination -->
 <div class="block">
     <div class="block-header">
-        <h3 class="block-title">Haaman Berita <small>Web Desa Mojorejo</small></h3>
+        <h3 class="block-title">Halaman Berita <small>Web Desa Mojorejo</small></h3>
     </div>
+    
     <div class="block-content block-content-full">
         <!-- DataTables init on table by adding .js-dataTable-full-pagination class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
+        <div>
+            <a href="{{route('admin.berita.tambah')}}" style="text-decoration: none" class="btn btn-primary mb-2 text-white">Tambah Berita</a>
+        </div>
         <table class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination">
             <thead>
                 <tr>
@@ -55,14 +59,16 @@
 <!-- END Dynamic Table Full Pagination -->
 @endsection
 @section('script')
-    <script src="assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="assets/js/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="assets/js/plugins/datatables/buttons/dataTables.buttons.min.js"></script>
-    <script src="assets/js/plugins/datatables/buttons/buttons.print.min.js"></script>
-    <script src="assets/js/plugins/datatables/buttons/buttons.html5.min.js"></script>
-    <script src="assets/js/plugins/datatables/buttons/buttons.flash.min.js"></script>
-    <script src="assets/js/plugins/datatables/buttons/buttons.colVis.min.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <script src="{{asset('admin/js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('admin/js/plugins/datatables/buttons/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('admin/js/plugins/datatables/buttons/buttons.print.min.js')}}"></script>
+    <script src="{{asset('admin/js/plugins/datatables/buttons/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('admin/js/plugins/datatables/buttons/buttons.flash.min.js')}}"></script>
+    <script src="{{asset('admin/js/plugins/datatables/buttons/buttons.colVis.min.js')}}"></script>
 
     <!-- Page JS Code -->
-    <script src="assets/js/pages/be_tables_datatables.min.js"></script>    
+    <script src="{{asset('admin/js/pages/be_tables_datatables.min.js')}}"></script>    
 @endsection
