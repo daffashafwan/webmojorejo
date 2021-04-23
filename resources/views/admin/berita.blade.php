@@ -39,15 +39,15 @@
                     </td>
                     <td>
                         <div class="btn-group mr-2 mb-2" role="group" aria-label="Icons Text group">
-                            <button type="button" class="btn btn-primary">
+                            <a href="{{route('admin.berita.lihat-berita', ['id'=>$b->id])}}" type="button" class="text-white btn btn-primary">
                                 <i class="fa fa-fw fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-primary">
+                            </a>
+                            <a href="{{route('admin.berita.edit', ['id'=>$b->id])}}" type="button" class="text-white btn btn-primary">
                                 <i class="fa fa-fw fa-edit"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger">
+                            </a>
+                            <a bid="{{$b->id}}" data-toggle="modal" data-target="#modal-hapus-popout" type="button" class="modal-hapus-popout text-white btn btn-danger">
                                 <i class="fa fa-fw fa-trash"></i>
-                            </button>
+                            </a>
                         </div>
                     </td>
                 </tr>
@@ -57,6 +57,38 @@
     </div>
 </div>
 <!-- END Dynamic Table Full Pagination -->
+
+<!-- Pop Out Block Modal -->
+<div class="modal fade" id="modal-hapus-popout" tabindex="-1" role="dialog" aria-labelledby="modal-hapus-popout" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-popout" role="document">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-danger">
+                    <h3 class="block-title">Hapus Berita</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-fw fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <form id="formHapusBerita" action="" method="POST">
+                    @method('delete')
+                    @csrf
+                    <div class="block-content font-size-sm form-group">
+                        <h4>Yakin ingin menghapus berita ini ?</h4>
+                    </div>
+                    <div class="block-content block-content-full text-right border-top">
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-check mr-1"></i>Ok</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Pop Out Block Modal -->
+
 @endsection
 @section('script')
 
@@ -70,5 +102,11 @@
     <script src="{{asset('admin/js/plugins/datatables/buttons/buttons.colVis.min.js')}}"></script>
 
     <!-- Page JS Code -->
-    <script src="{{asset('admin/js/pages/be_tables_datatables.min.js')}}"></script>    
+    <script src="{{asset('admin/js/pages/be_tables_datatables.min.js')}}"></script>
+    <script>
+    $(".modal-hapus-popout").click(function (e) {
+        let id = $(this).attr("bid")
+        $('#formHapusBerita').attr('action', '/admin/berita/delete/' + id );
+    });
+    </script>    
 @endsection

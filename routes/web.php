@@ -21,7 +21,22 @@ Route::prefix('admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::prefix('berita')->group(function(){
         Route::get('/', [AdminController::class, 'berita'])->name('admin.berita.index');
-        Route::get('/tambah-berita', [AdminController::class, 'tambahBerita'])->name('admin.berita.tambah');
+        Route::prefix('tambah-berita')->group(function(){
+            Route::get('/', [AdminController::class, 'tambahBerita'])->name('admin.berita.tambah');
+            Route::post('/store', [AdminController::class, 'store'])->name('admin.berita.tambah.store');
+        });
+        Route::get('lihat-berita/{id}', [AdminController::class, 'lihatBerita'])->name('admin.berita.lihat-berita');
+        Route::prefix('edit/{id}')->group(function(){
+            Route::get('/', [AdminController::class, 'editBerita'])->name('admin.berita.edit');
+            Route::post('/post', [AdminController::class, 'editBeritaPost'])->name('admin.berita.edit.post');
+        });
+        Route::delete('delete/{id}', [AdminController::class, 'hapusBerita'])->name('admin.berita.hapus');
     });
     
 });
+
+Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
+    ->name('ckfinder_connector');
+
+Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')
+    ->name('ckfinder_browser');
