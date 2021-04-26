@@ -211,69 +211,6 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Berita</h2>
-          <p>Portal Berita Desa Mojorejo</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Sed ut perspiciatis</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4><a href="">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4><a href="">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-slideshow"></i></div>
-              <h4><a href="">Dele cardo</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-arch"></i></div>
-              <h4><a href="">Divera don</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
           <h2>Pelayanan Pemerintah Desa Mojorejo</h2>
           <p>Pelayanan</p>
         </div>
@@ -281,7 +218,7 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-home-smile"></i></div>
+            <div class="icon"><i class="bx bx-home-smile"></i></div>
               <h4><a href="">Layanan Pendaftaran Kartu Keluarga</a></h4>
               <p>Layanan Ini Mencakup Pendaftaran Isian Kartu Keluarga (KK)</p>
             </div>
@@ -289,7 +226,7 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-credit-card-front"></i></div>
+            <div class="icon"><i class="bx bx-credit-card-front"></i></div>
               <h4><a href="">Layanan Pengurusan Kartu Tanda Penduduk</a></h4>
               <p>Layanan Ini Mencakup Pengajuan KTP Baru, KTP Hilang, dan Perubahan Data KTP</p>
             </div>
@@ -297,7 +234,7 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-user-plus"></i></div>
+            <div class="icon"><i class="bx bx-user-plus"></i></div>
               <h4><a href="">Layanan Pengurusan Akta Kelahiran</a></h4>
               <p>Layanan Ini Mencakup Pendaftaran Akta Kelahiran</p>
             </div>
@@ -305,7 +242,7 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-user-minus"></i></div>
+            <div class="icon"><i class="bx bx-user-minus"></i></div>
               <h4><a href="">Layanan Pengurusan Akta Kematian</a></h4>
               <p>Layanan Ini Mencakup Pendaftaran Akta Kematian</p>
             </div>
@@ -313,7 +250,7 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><i class="bx bxs-user-x"></i></div>
+            <div class="icon"><i class="bx bxs-user-x"></i></div>
               <h4><a href="">Layanan Pengurusan Surat Pernyataan Kematian</a></h4>
               <p>Layanan Ini Mencakup Pengurusan Surat Pernyataan Kematian</p>
             </div>
@@ -321,7 +258,7 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-envelope-open"></i></div>
+            <div class="icon"><i class="bx bx-envelope-open"></i></div>
               <h4><a href="">Layanan Pengurusan Keramaian</a></h4>
               <p>Layanan Ini Mencakup Pengurusan Ijin Keramaaian</p>
             </div>
@@ -330,7 +267,78 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
         </div>
 
       </div>
-    </section><!-- End Services Section -->
+  
+
+    <section id="services" class="services">
+    <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+          <h2>Berita</h2>
+          <p>Portal Berita Desa Mojorejo</p>
+        </div>
+
+        
+        <div class="row flex-items-xs-middle flex-items-xs-center">
+            @foreach ($berita as $post)
+            <div class="col-xs-12 col-lg-4">
+            <div class="icon-box" style="margin-bottom: 20px;">
+                
+                    <img src="userfiles/images/{{$post->gambar}}" class="card-img-top"
+                            style="height: 275px; object-fit: cover; object-position: center;" alt="">
+                
+                    <div class="card-block mt-3">
+                        
+                        <h4 style="padding-top:20px;"><a href="{{route('berita.lihat-berita2', ['id'=>$post->id])}}">{{$post->judul_berita}}</a></h4>
+                        {!! Str::limit($post->isi_berita, 100) !!}
+                        <div class="text-center" style="padding-top:20px;"><a href="/post/{{$post->id}}" style="background: #ffc451; border: 0; padding: 10px 24px; color: #151515; transition: 0.4s; border-radius: 4px;">Selengkapnya</a></div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+        {{-- <div class="row mt-5 d-flex justify-content-center">
+                    <div class="card pb-0">
+                    <a href="#" class="btn">Semua Berita</a>
+                    </div>
+                </div> --}}
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
