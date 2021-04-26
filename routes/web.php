@@ -32,6 +32,10 @@ Route::prefix('admin')->group(function(){
         });
         Route::delete('delete/{id}', [AdminController::class, 'hapusBerita'])->name('admin.berita.hapus');
     });
+    Route::prefix('perangkat')->group(function(){
+        Route::get('/', [AdminController::class, 'perangkat'])->name('admin.perangkat.index');
+        Route::get('kelola', [AdminController::class, 'kelola'])->name('admin.perangkat.kelola');
+    });
     
 });
 

@@ -4,8 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Jabatan;
 
 class Perangkat extends Model
 {
     use HasFactory;
+    protected $table = 'perangkats';
+
+    public function Jabatan(){
+        return $this->belongsTo(Jabatan::class);
+    }
 }

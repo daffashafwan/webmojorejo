@@ -7,6 +7,9 @@ use App\Models\Berita;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Exception;
+use App\Models\Perangkat;
+use App\Models\Jabatan;
+use App\Models\MasaJabatan;
 
 class AdminController extends Controller
 {
@@ -15,21 +18,51 @@ class AdminController extends Controller
     }
     public function berita(){
         $berita = Berita::all();
-        return view('admin.berita', compact('berita'));
+        return view('admin.berita.index', compact('berita'));
     }
 
     public function tambahBerita(){
-        return view('admin.tambah-berita');
+        return view('admin.berita.tambah-berita');
     }
 
     public function lihatBerita($id){
         $berita = Berita::where('id', $id)->first();
-        return view('admin.lihat-berita', compact('berita'));
+        return view('admin.berita.lihat-berita', compact('berita'));
     }
 
     public function editBerita($id){
         $berita = Berita::where('id', $id)->first();
-        return view('admin.edit-berita', compact('berita'));
+        return view('admin.berita.edit-berita', compact('berita'));
+    }
+
+    public function perangkat(){
+        $masa_jabatan = MasaJabatan::all();
+        $jabatan = Jabatan::all();
+        $perangkat = Perangkat::all();
+        return view('admin.perangkat.index', compact('perangkat', 'jabatan', 'masa_jabatan'));
+    }
+
+    public function kelola(){
+        $jabatan = Jabatan::all();
+        $masa_jabatan = MasaJabatan::all();
+        $perangkat = Perangkat::all();
+        return view('admin.perangkat.kelola', compact('jabatan', 'masa_jabatan', 'perangkat'));
+    }
+
+    public function jabatan(Request $request){
+        $data = $request->input();
+        switch ($data['action']) {
+            case 'tambah':
+                # code...
+                break;
+            case 'edit':
+                # code...
+                break;
+            case 'hapus':
+                # code...
+                break;
+        }
+        return redirect(route('admin.perangkat.kelola'));
     }
 
     public function editBeritaPost(Request $request){

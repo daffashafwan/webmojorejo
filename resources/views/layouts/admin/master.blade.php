@@ -195,7 +195,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link" href="be_forms_custom_controls.html">
+                                    <a class="nav-main-link" href="{{route('admin.perangkat.index')}}">
                                         <span class="nav-main-link-name">Kelola Perangkat</span>
                                     </a>
                                 </li>

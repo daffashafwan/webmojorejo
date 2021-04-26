@@ -104,9 +104,6 @@
     <!-- Page JS Code -->
     <script src="{{asset('admin/js/pages/be_tables_datatables.min.js')}}"></script>
     <script>
-    $(".modal-hapus-popout").click(function (e) {
-        let id = $(this).attr("bid")
-        $('#formHapusBerita').attr('action', '/admin/berita/delete/' + id );
-    });
+    
     </script>    
 @endsection
