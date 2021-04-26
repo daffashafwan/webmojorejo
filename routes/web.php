@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminController as AdminController;
 */
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
+Route::get('post/{id}', [AdminController::class, 'lihatBerita2'])->name('berita.lihat-berita2');
 
 Route::prefix('admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');

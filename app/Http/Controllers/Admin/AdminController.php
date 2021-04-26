@@ -30,6 +30,11 @@ class AdminController extends Controller
         return view('admin.berita.lihat-berita', compact('berita'));
     }
 
+	public function lihatBerita2($id){
+        $berita = Berita::where('id', $id)->first();
+        return view('admin.lihat-berita2', compact('berita'));
+    }
+	
     public function editBerita($id){
         $berita = Berita::where('id', $id)->first();
         return view('admin.berita.edit-berita', compact('berita'));
