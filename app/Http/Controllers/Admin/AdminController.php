@@ -53,13 +53,15 @@ class AdminController extends Controller
         $data = $request->input();
         switch ($data['action']) {
             case 'tambah':
-                # code...
+                $jabatan = new Jabatan();
+                $jabatan->nama_jabatan = $data['nama_jabatan'];
+                $jabatan->save();
                 break;
             case 'edit':
-                # code...
+                
                 break;
             case 'hapus':
-                # code...
+                
                 break;
         }
         return redirect(route('admin.perangkat.kelola'));
@@ -91,12 +93,32 @@ class AdminController extends Controller
         return redirect(route('admin.berita.edit', ['id'=>request()->route('id')]))->with('success', 'Berhasil Ganti Berita');
     }
 
-    public function hapusBerita(){
+    public function hapusBerita($id){
         try {
-            Berita::destroy(request()->route('id'));
+            Berita::destroy($id);
             return redirect(route('admin.berita.index'))->with('success', 'berhasil hapus berita');
         } catch (Exception $e) {
             return redirect(route('admin.berita.index'))->with('danger', 'gagal hapus berita');
+        }
+    }
+
+    public function ubahStatusBerita(Request $request){
+        $data = $request->input();
+        try {
+            $berita = Berita::find($data['id']);
+            switch ($data['gantistatus']) {
+                case '1':
+                    $berita->status = 'Tidak Aktif';
+                    $berita->save();
+                    break;
+                case '0':
+                    $berita->status = 'Aktif';
+                    $berita->save();
+                    break;
+            }
+            return redirect(route('admin.berita.index'))->with('success', 'berhasil ganti status berita');
+        } catch (Exception $e) {
+            return redirect(route('admin.berita.index'))->with('danger', 'gagal ganti status berita');
         }
     }
 

@@ -30,6 +30,7 @@ Route::prefix('admin')->group(function(){
             Route::get('/', [AdminController::class, 'editBerita'])->name('admin.berita.edit');
             Route::post('/post', [AdminController::class, 'editBeritaPost'])->name('admin.berita.edit.post');
         });
+        Route::post('/ubah-status', [AdminController::class, 'ubahStatusBerita'])->name('admin.berita.ubah-status');
         Route::delete('delete/{id}', [AdminController::class, 'hapusBerita'])->name('admin.berita.hapus');
     });
     Route::prefix('perangkat')->group(function(){
