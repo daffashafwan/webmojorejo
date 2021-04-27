@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Gp Bootstrap Template - Index</title>
+  <title>Mojorejo Batu Official Website</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -206,9 +206,45 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
       </div>
     </section>End Features Section -->
 
+    <section id="services" class="services">
+    <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+          <h2>Berita</h2>
+          <p>Portal Berita Desa Mojorejo</p>
+        </div>
+
+        
+        <div class="row flex-items-xs-middle flex-items-xs-center">
+            @foreach ($berita as $post)
+            <div class="col-xs-12 col-lg-4">
+            <div class="icon-box" style="margin-bottom: 20px;">
+                
+                    <img src="userfiles/images/{{$post->gambar}}" class="card-img-top"
+                            style="height: 275px; object-fit: cover; object-position: center;" alt="">
+                
+                    <div class="card-block mt-3">
+                        
+                        <h4 style="padding-top:20px;"><a href="{{route('berita.lihat-berita2', ['id'=>$post->id])}}">{{$post->judul_berita}}</a></h4>
+                        {!! Str::limit($post->isi_berita, 100) !!}
+                        <div class="text-center" style="padding-top:20px;"><a href="/post/{{$post->id}}" style="background: #ffc451; border: 0; padding: 10px 24px; color: #151515; transition: 0.4s; border-radius: 4px;">Selengkapnya</a></div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+        {{-- <div class="row mt-5 d-flex justify-content-center">
+                    <div class="card pb-0">
+                    <a href="#" class="btn">Semua Berita</a>
+                    </div>
+                </div> --}}
+    </div>
+</section>
+
         <!-- ======= Services Section 2 ======= -->
         <section id="services" class="services">
-      <div class="container" data-aos="fade-up">
+      <div class="container" data-aos="fade-up" style="margin-bottom: 20px;">
 
         <div class="section-title">
           <h2>Pelayanan Pemerintah Desa Mojorejo</h2>
@@ -269,85 +305,14 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
       </div>
   
 
-    <section id="services" class="services">
-    <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-          <h2>Berita</h2>
-          <p>Portal Berita Desa Mojorejo</p>
-        </div>
-
-        
-        <div class="row flex-items-xs-middle flex-items-xs-center">
-            @foreach ($berita as $post)
-            <div class="col-xs-12 col-lg-4">
-            <div class="icon-box" style="margin-bottom: 20px;">
-                
-                    <img src="userfiles/images/{{$post->gambar}}" class="card-img-top"
-                            style="height: 275px; object-fit: cover; object-position: center;" alt="">
-                
-                    <div class="card-block mt-3">
-                        
-                        <h4 style="padding-top:20px;"><a href="{{route('berita.lihat-berita2', ['id'=>$post->id])}}">{{$post->judul_berita}}</a></h4>
-                        {!! Str::limit($post->isi_berita, 100) !!}
-                        <div class="text-center" style="padding-top:20px;"><a href="/post/{{$post->id}}" style="background: #ffc451; border: 0; padding: 10px 24px; color: #151515; transition: 0.4s; border-radius: 4px;">Selengkapnya</a></div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-
-        {{-- <div class="row mt-5 d-flex justify-content-center">
-                    <div class="card pb-0">
-                    <a href="#" class="btn">Semua Berita</a>
-                    </div>
-                </div> --}}
-    </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
       <div class="container" data-aos="zoom-in">
 
         <div class="text-center">
-          <h3>Call To Action</h3>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="cta-btn" href="#">Call To Action</a>
+          <h3>Curhat Desa</h3>
+          <p> Curhat Desa merupakan media aspirasi untuk warga Desa Mojorejo Kota Batu dalam menyampaikan kritik dan saran mengenai keluhan tentang semua permasalahan yang ada di Desa Mojorejo.</p>
+          <a class="cta-btn" href="/curhatdesa">Curhat Desa</a>
         </div>
 
       </div>
@@ -738,43 +703,66 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
               <div class="email">
                 <i class="icofont-envelope"></i>
                 <h4>Email:</h4>
-                <p>info@example.com</p>
+                <p>pemdesmojorejo@gmail.com</p>
               </div>
 
-              <div class="phone">
-                <i class="icofont-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
-              </div>
+              
 
             </div>
 
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+ <!-- Success message -->
+ @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{Session::get('success')}}
+            </div>
+        @endif
+            <form action="{{ route('index.contact.store') }}" method="post" role="form" class="php-email-form">
+            @csrf
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'error' : '' }}" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <!-- Error -->
+        @if ($errors->has('name'))
+        <div class="error">
+            {{ $errors->first('name') }}
+        </div>
+        @endif
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control {{ $errors->has('email') ? 'error' : '' }}" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  @if ($errors->has('email'))
+        <div class="error">
+            {{ $errors->first('email') }}
+        </div>
+        @endif
                   <div class="validate"></div>
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" class="form-control {{ $errors->has('subject') ? 'error' : '' }}" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                @if ($errors->has('subject'))
+        <div class="error">
+            {{ $errors->first('subject') }}
+        </div>
+        @endif
                 <div class="validate"></div>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <textarea class="form-control {{ $errors->has('message') ? 'error' : '' }}" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                @if ($errors->has('message'))
+        <div class="error">
+            {{ $errors->first('message') }}
+        </div>
+        @endif
                 <div class="validate"></div>
               </div>
               <div class="mb-3">
                 <div class="loading">Loading</div>
-                <div class="error-message"></div>
+                
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
@@ -851,7 +839,7 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Gp</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Mojorejo</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

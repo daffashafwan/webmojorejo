@@ -12,4 +12,5 @@ class FrontController extends Controller
         $berita = Berita::all()->take(6);
         return view('index', compact('berita'));
     }
+
 }
