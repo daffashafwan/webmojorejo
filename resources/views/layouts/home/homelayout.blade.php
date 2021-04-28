@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Web Desa Mojorejo</title>
+  <title>Mojorejo Batu Official Website</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -44,28 +44,20 @@
 <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="#about">Tentang Desa</a></li>
-          <li><a href="#services">Pelayanan</a></li>
-          <li><a href="#portfolio">Galeri</a></li>
-          <li><a href="#team">Perangkat</a></li>
-          <li class="drop-down"><a href="">Drop Down</a>
+          <li><a href="/#about">Tentang Desa</a></li>
+          <li><a href="/#portfolio">Galeri</a></li>
+          <li><a href="/#team">Perangkat</a></li>
+          <li class="drop-down"><a href="">Pelayanan</a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="drop-down"><a href="#">Deep Drop Down</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+            <li><a href="#services">Layanan Pendaftaran Kartu Keluarga</a></li>
+                  <li><a href="#services">Layanan Pengurusan Kartu Tanda Penduduk</a></li>
+                  <li><a href="#services">Layanan Pengurusan Akta Kelahiran</a></li>
+                  <li><a href="#services">Layanan Pengurusan Akta Kematian</a></li>
+                  <li><a href="#services">Layanan Pengurusan Surat Pernyataan Kematian</a></li>
+                  <li><a href="#services">Layanan Pengurusan Keramaian</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Kontak</a></li>
+          <li><a href="/#contact">Kontak</a></li>
 
         </ul>
       </nav><!-- .nav-menu -->
@@ -91,8 +83,8 @@
               <p>
               Desa Mojorejo <br>
               Kec. Junrejo, Kota Batu (65322)<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
+                
+                <strong>Email:</strong> pemdesmojorejo@gmail.com<br>
               </p>
               <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -107,11 +99,11 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Tentang Desa</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Pelayanan</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#about">Tentang Desa</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#services">Pelayanan</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#">Privacy policy</a></li>
             </ul>
           </div>
 
@@ -141,7 +133,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Gp</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Mojorejo</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

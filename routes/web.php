@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController as FrontController;
 use App\Http\Controllers\Admin\AdminController as AdminController;
+use App\Http\Controllers\ContactUsFormController;
+use App\Http\Controllers\CurhatDesaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,15 @@ use App\Http\Controllers\Admin\AdminController as AdminController;
 */
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
-Route::get('post/{id}', [FrontController::class, 'lihatBerita'])->name('berita.lihat-berita2');
+Route::get('post/{id}', [AdminController::class, 'lihatBerita2'])->name('berita.lihat-berita2');
+
+Route::post('/', [ContactUsFormController::class, 'ContactUsForm'])->name('index.contact.store');
+
+Route::get('/kritikdansaran', [CurhatDesaController::class, 'index'])->name('c');
+Route::get('/kritikdansaran', [CurhatDesaController::class, 'createCurhat']);
+Route::post('/kritikdansaran', [CurhatDesaController::class, 'CurhatForm'])->name('curhatdesa.store');
+
+
 
 //Route::get('/admin', [AuthController::class, 'showFormLogin'])->name('login');
 // Route::get('/login', [AuthController::class, 'showFormLogin'])->name('login');
