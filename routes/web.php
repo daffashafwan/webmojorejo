@@ -26,6 +26,8 @@ Route::get('/kritikdansaran', [CurhatDesaController::class, 'index'])->name('c')
 Route::get('/kritikdansaran', [CurhatDesaController::class, 'createCurhat']);
 Route::post('/kritikdansaran', [CurhatDesaController::class, 'CurhatForm'])->name('curhatdesa.store');
 
+
+
 //Route::get('/admin', [AuthController::class, 'showFormLogin'])->name('login');
 // Route::get('/login', [AuthController::class, 'showFormLogin'])->name('login');
 // Route::post('/login', [AuthController::class, 'login']);
