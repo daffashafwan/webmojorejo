@@ -18,7 +18,7 @@ use App\Http\Controllers\CurhatDesaController;
 */
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
-Route::get('post/{id}', [AdminController::class, 'lihatBerita2'])->name('berita.lihat-berita2');
+Route::get('post/{id}', [FrontController::class, 'lihatBerita'])->name('berita.lihat-berita2');
 
 Route::post('/', [ContactUsFormController::class, 'ContactUsForm'])->name('index.contact.store');
 
@@ -59,6 +59,13 @@ Route::group(['prefix' => 'admin','middleware' => ['auth:sanctum', 'verified']],
                 Route::post('/post', [AdminController::class, 'postKelola'])->name('admin.perangkat.kelola.post');
                 Route::delete('/delete-jabatan/{id}', [AdminController::class, 'hapusJabatan'])->name('admin.perangkat.jabatan.hapus');
                 Route::delete('/delete-masa-jabatan/{id}', [AdminController::class, 'hapusMasaJabatan'])->name('admin.perangkat.masa.jabatan.hapus');
+            });
+        });
+        Route::prefix('galeri')->group(function(){
+            Route::get('/', [AdminController::class, 'galeri'])->name('admin.galeri.index');
+            Route::prefix('tambah')->group(function(){
+                Route::get('/', [AdminController::class, 'tambahGaleri'])->name('admin.galeri.tambah');
+                Route::post('/store', [AdminController::class, 'storeGambar'])->name('admin.galeri.tambah.store'); 
             });
         });
 });

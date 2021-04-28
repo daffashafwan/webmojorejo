@@ -13,8 +13,7 @@ class FrontController extends Controller
         $berita = Berita::latest()->where('status', 'Aktif')->get();
         $masa_jabatan = MasaJabatan::all();
         $jabatan = Jabatan::all();
-        $perangkat = Perangkat::with('Jabatan', 'MasaJabatan')->get();
-   
+        $perangkat = Perangkat::where('status', 1)->get();
         return view('index', compact('berita', 'masa_jabatan', 'jabatan', 'perangkat'));
     }
 

@@ -208,7 +208,7 @@
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_forms_layouts.html">
+                                <a class="nav-main-link" href="{{route('admin.galeri.index')}}">
                                     <span class="nav-main-link-name">Kelola Galeri</span>
                                 </a>
                             </li>

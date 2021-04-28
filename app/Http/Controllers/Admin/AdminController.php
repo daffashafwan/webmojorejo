@@ -7,6 +7,7 @@ use App\Models\Berita;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Exception;
+use App\Models\Galeri;
 use App\Models\Perangkat;
 use App\Models\Jabatan;
 use App\Models\MasaJabatan;
@@ -19,6 +20,15 @@ class AdminController extends Controller
     public function berita(){
         $berita = Berita::all();
         return view('admin.berita.index', compact('berita'));
+    }
+
+    public function galeri(){
+        $galeri = Galeri::all();
+        return view('admin.galeri.index', compact('galeri'));
+    }
+
+    public function tambahGaleri(){
+        return view('admin.galeri.tambah-gambar');
     }
 
     public function tambahBerita(){
@@ -264,17 +274,44 @@ class AdminController extends Controller
                     $berita->status = 'Aktif';
                     $berita->save();
                     break;
-                    
             }
             return redirect(route('admin.berita.index'))->with('success', 'berhasil simpan berita');
-            
-
         } catch (Exception $e) {
             dd('oi');
             return redirect(route('admin.berita.tambah'))->with('danger', 'gagal simpan berita');
         }
+    }
 
-        
-        
+    public function storeGambar(Request $request){
+        $data = $request->input();
+        try {
+            $galeri = new Galeri();
+                // menyimpan data file yang diupload ke variabel $file
+            $file = $request->file('gambar');
+            $nama_file = time()."_".$file->getClientOriginalName();
+            
+                    // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'userfiles/images/galeri';
+            $file->move($tujuan_upload,$nama_file);
+            $galeri->path = $nama_file;
+            $galeri->judul_gambar = $data["judul_gambar"];
+            $galeri->kategori = $data["kategori"];
+            
+            switch ($request->input('action')) {
+                case 'simpan':
+                    $galeri->status = 'Tidak Aktif';
+                    $galeri->save();
+                    break;
+                
+                case 'publish':
+                    $galeri->status = 'Aktif';
+                    $galeri->save();
+                    break;
+            }
+            return redirect(route('admin.galeri.index'))->with('success', 'berhasil simpan gambar');
+        } catch (Exception $e) {
+            dd('oi');
+            return redirect(route('admin.galeri.tambah'))->with('danger', 'gagal simpan gambar');
+        }
     }
 }
