@@ -19,6 +19,6 @@ class MasaJabatan extends Model
     ];
 
     public function Perangkat(){
-        return $this->hasMany(Perangkat::class);
+        return $this->hasMany(Perangkat::class, 'id');
     }
 }
