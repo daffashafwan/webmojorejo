@@ -275,26 +275,29 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
     <div class="section-title">
           <h2>Berita</h2>
           <p>Portal Berita Desa Mojorejo</p>
+          <a href="" style="visibility: <?php echo(count($berita) > 6) ? 'visible' : 'hidden'?>">lihat selengkapnya</a>
         </div>
 
         
         <div class="row flex-items-xs-middle flex-items-xs-center">
-            @foreach ($berita as $post)
+            
+            @for ($i = 0; $i < min(6, count($berita)); $i++)
+                
+            
             <div class="col-xs-12 col-lg-4">
             <div class="icon-box" style="margin-bottom: 20px;">
                 
-                    <img src="userfiles/images/{{$post->gambar}}" class="card-img-top"
+                    <img src="{{url('userfiles/images/'.$berita[$i]['gambar'])}}" class="card-img-top"
                             style="height: 275px; object-fit: cover; object-position: center;" alt="">
                 
-                    <div class="card-block mt-3">
-                        
-                        <h4 style="padding-top:20px;"><a href="{{route('berita.lihat-berita2', ['id'=>$post->id])}}">{{$post->judul_berita}}</a></h4>
-                        {!! Str::limit($post->isi_berita, 100) !!}
-                        <div class="text-center" style="padding-top:20px;"><a href="/post/{{$post->id}}" style="background: #ffc451; border: 0; padding: 10px 24px; color: #151515; transition: 0.4s; border-radius: 4px;">Selengkapnya</a></div>
+                    <div class="card-block mt-3">      
+                        <h4 style="padding-top:20px;"><a href="{{route('berita.lihat-berita2', ['id'=>$berita[$i]->id])}}">{{$berita[$i]->judul_berita}}</a></h4>
+                        {!! Str::limit($berita[$i]->isi_berita, 100) !!}
+                        <div class="text-center" style="padding-top:20px;"><a href="/post/{{$berita[$i]->id}}" style="background: #ffc451; border: 0; padding: 10px 24px; color: #151515; transition: 0.4s; border-radius: 4px;">Selengkapnya</a></div>
                     </div>
                 </div>
             </div>
-            @endforeach
+            @endfor
         </div>
 
         {{-- <div class="row mt-5 d-flex justify-content-center">

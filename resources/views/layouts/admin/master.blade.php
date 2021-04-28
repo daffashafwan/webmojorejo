@@ -291,11 +291,20 @@
                                     <span>Lock Account</span>
                                     <i class="si si-lock ml-1"></i>
                                 </a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
                                 <a class="dropdown-item d-flex align-items-center justify-content-between"
-                                    href="op_auth_signin.html">
+                                href="{{ route('logout') }}" onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                                    {{ __('Log Out') }}
                                     <span>Log Out</span>
                                     <i class="si si-logout ml-1"></i>
+                                    
+        
+                                        
+                                    
                                 </a>
+                            </form>
                             </div>
                         </div>
                     </div>

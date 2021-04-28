@@ -43,7 +43,7 @@
                     <td class="font-w600 font-size-sm">{{$j->nama_jabatan}}</td>
                     <td>
                         <div class="btn-group mr-2 mb-2" role="group" aria-label="Icons Text group">
-                            <a jid="{{$j->nama_jabatan}}" data-toggle="modal" data-target="#modal-edit-jabatan-popout" type="button" class="modal-edit-jabatan-popout text-white btn btn-primary">
+                            <a jid="{{$j->id}}" nj="{{$j->nama_jabatan}}" data-toggle="modal" data-target="#modal-edit-jabatan-popout" type="button" class="modal-edit-jabatan-popout text-white btn btn-primary">
                                 <i class="fa fa-fw fa-edit"></i>
                             </a>
                             <a jid="{{$j->id}}" data-toggle="modal" data-target="#modal-hapus-jabatan-popout" type="button" class="modal-hapus-jabatan-popout text-white btn btn-danger">
@@ -88,7 +88,7 @@
                     <td class="font-w600 font-size-sm">{{($mj->status == 1) ? 'Aktif' : 'Tidak Aktif'}}</td>
                     <td>
                         <div class="btn-group mr-2 mb-2" role="group" aria-label="Icons Text group">
-                            <a mjid="{{$mj->id}}" mjm="{{$mj->tahun_mulai}}" mjs="{{$mj->tahun_selesai}}" data-toggle="modal" data-target="#modal-edit-masa-jabatan-popout" type="button" class="modal-edit-masa-jabatan-popout text-white btn btn-primary">
+                            <a mjid="{{$mj->id}}" mjst="{{$mj->status}}" mjm="{{$mj->tahun_mulai}}" mjs="{{$mj->tahun_selesai}}" data-toggle="modal" data-target="#modal-edit-masa-jabatan-popout" type="button" class="modal-edit-masa-jabatan-popout text-white btn btn-primary">
                                 <i class="fa fa-fw fa-edit"></i>
                             </a>
                             <a mjid="{{$mj->id}}" data-toggle="modal" data-target="#modal-hapus-masa-jabatan-popout" type="button" class="modal-hapus-masa-jabatan-popout text-white btn btn-danger">
@@ -116,10 +116,10 @@
                         </button>
                     </div>
                 </div>
-                <form action="" method="POST">
+                <form action="{{route('admin.perangkat.kelola.post')}}" method="POST">
                     @csrf
                     <div class="block-content font-size-sm form-group">
-                        <input type="hidden" name="action" value="tambah">
+                        <input type="hidden" name="action" value="tambah-jabatan">
                         <label for="nama_jabatan">Masukkan Jabatan Baru</label>
                         <input id="nama_jabatan" name="nama_jabatan" type="text" class="form-control">
                     </div>
@@ -148,10 +148,11 @@
                         </button>
                     </div>
                 </div>
-                <form action="" method="POST">
+                <form action="{{route('admin.perangkat.kelola.post')}}" method="POST">
                     @csrf
                     <div class="block-content font-size-sm form-group">
-                        <input type="hidden" name="action" value="edit">
+                        <input type="hidden" name="action" value="edit-jabatan">
+                        <input type="hidden" id="id_nama_jabatan" name="id_nama_jabatan">
                         <label for="edit_nama_jabatan">Masukkan Nama Jabatan Baru</label>
                         <input id="edit_nama_jabatan" name="edit_nama_jabatan" type="text" class="form-control">
                     </div>
@@ -180,11 +181,12 @@
                         </button>
                     </div>
                 </div>
-                <form id="formHapusBerita" action="" method="POST">
+                <form id="formHapusJabatan" action="" method="POST">
                     @method('delete')
                     @csrf
                     <div class="block-content font-size-sm form-group">
-                        <input type="hidden" name="action" value="hapus">
+                        <input type="hidden" name="action" value="hapus-jabatan">
+                        <input type="hidden" name="id_hapus_jabatan" id="id_hapus_jabatan">
                         <h4>Yakin ingin menghapus jabatan ini ?</h4>
                     </div>
                     <div class="block-content block-content-full text-right border-top">
@@ -213,12 +215,14 @@
                         </button>
                     </div>
                 </div>
-                <form action="" method="POST">
+                <form action="{{route('admin.perangkat.kelola.post')}}" method="POST">
                     @csrf
                     <div class="block-content font-size-sm form-group">
-                        <input type="hidden" name="action" value="tambah">
-                        <label for="masa_abatan">Masukkan Masa Jabatan Baru</label>
-                        <input id="masa_abatan" name="masa_abatan" type="text" class="form-control">
+                        <input type="hidden" name="action" value="tambah-masa-jabatan">
+                        <label for="masa_jabatan_mulai">Masukkan Masa Jabatan Mulai Baru</label>
+                        <input id="masa_jabatan_mulai" name="masa_jabatan_mulai" type="text" class="form-control">
+                        <label for="masa_jabatan_selesai">Masukkan Masa Jabatan Selesai Baru</label>
+                        <input id="masa_jabatan_selesai" name="masa_jabatan_selesai" type="text" class="form-control">
                     </div>
                     <div class="block-content block-content-full text-right border-top">
                         <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
@@ -245,16 +249,22 @@
                         </button>
                     </div>
                 </div>
-                <form action="" method="POST">
+                <form action="{{route('admin.perangkat.kelola.post')}}" method="POST">
                     @csrf
                     <div class="block-content font-size-sm form-group">
-                        <input type="hidden" name="action" value="edit">
+                        <input type="hidden" name="action" value="edit-masa-jabatan">
+                        <input type="hidden" name="status_masa_jabatan" id="status_masa_jabatan">
+                        <input type="hidden" name="id_masa_jabatan" id="id_masa_jabatan">
                         <label for="edit_masa_jabatan">Masa Jabatan Sekarang</label>
                         <input disabled id="edit_masa_jabatan" name="edit_masa_jabatan" type="text" class="form-control">
                         <label for="edit_masa_jabatan_tahun_mulai">Tahun Mulai</label>
-                        <input id="edit_masa_jabatan_tahun_mulai" name="edit_masa_jabatan_tahun_mulai" type="text" class="form-control">
+                        <input id="edit_masa_jabatan_tahun_mulai" name="masa_jabatan_mulai" type="text" class="form-control">
                         <label for="edit_masa_jabatan_tahun_selesai">Tahun Selesai</label>
-                        <input id="edit_masa_jabatan_tahun_selesai" name="edit_masa_jabatan_tahun_selesai" type="text" class="form-control">
+                        <input id="edit_masa_jabatan_tahun_selesai" name="masa_jabatan_selesai" type="text" class="form-control">
+                        <select class="form-control" id="jabatan" name="status">
+                            <option selected value="1">Aktif</option>
+                            <option value="0">Tidak Aktif</option>
+                        </select>
                     </div>
                     <div class="block-content block-content-full text-right border-top">
                         <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
@@ -281,7 +291,7 @@
                         </button>
                     </div>
                 </div>
-                <form id="formHapusBerita" action="" method="POST">
+                <form id="formHapusMasaJabatan" action="" method="POST">
                     @method('delete')
                     @csrf
                     <div class="block-content font-size-sm form-group">
@@ -315,18 +325,30 @@
 <script>
     $(".modal-edit-jabatan-popout").click(function (e) {
         let jid = $(this).attr("jid")
-        $('#edit_nama_jabatan').val(jid);
-    });
-
-    $(".modal-edit-masa-jabatan-popout").click(function (e) {
-        let mjid = $(this).attr("mjid");
-        let mj = $(this).attr("mjm") + " - " + $(this).attr("mjs");
-        $('#edit_masa_jabatan').val(mj);
+        let nj = $(this).attr("nj")
+        $('#id_nama_jabatan').val(jid);
+        $('#edit_nama_jabatan').val(nj);
     });
 
     $(".modal-hapus-jabatan-popout").click(function (e) {
-        let id = $(this).attr("bid")
-        $('#formHapusBerita').attr('action', '/admin/berita/delete/' + id );
+        let jid = $(this).attr("jid");
+        $('#formHapusJabatan').attr('action', '/admin/perangkat/kelola/delete-jabatan/' + jid);
+    });
+
+    
+    
+    $(".modal-edit-masa-jabatan-popout").click(function (e) {
+        let mjid = $(this).attr("mjid");
+        let mjst = $(this).attr("mjs");
+        let mj = $(this).attr("mjm") + " - " + $(this).attr("mjs");
+        $('#id_masa_jabatan').val(mjid);
+        $('#edit_masa_jabatan').val(mj);
+        $('#status_masa_jabatan').val(mjst);
+    });
+
+    $(".modal-hapus-masa-jabatan-popout").click(function (e) {
+        let mjid = $(this).attr("mjid");
+        $('#formHapusMasaJabatan').attr('action', '/admin/perangkat/kelola/delete-masa-jabatan/' + mjid);
     });
 </script>
 @endsection

@@ -29,11 +29,6 @@ class AdminController extends Controller
         $berita = Berita::where('id', $id)->first();
         return view('admin.berita.lihat-berita', compact('berita'));
     }
-
-	public function lihatBerita2($id){
-        $berita = Berita::where('id', $id)->first();
-        return view('admin.lihat-berita2', compact('berita'));
-    }
 	
     public function editBerita($id){
         $berita = Berita::where('id', $id)->first();
@@ -52,6 +47,61 @@ class AdminController extends Controller
         $masa_jabatan = MasaJabatan::all();
         $perangkat = Perangkat::all();
         return view('admin.perangkat.kelola', compact('jabatan', 'masa_jabatan', 'perangkat'));
+    }
+
+    public function postKelola(Request $request){
+        $data = $request->input();
+        try {
+            switch ($data['action']) {
+                case 'tambah-jabatan':
+                    $jabatan = new Jabatan();
+                    $jabatan->nama_jabatan = $data['nama_jabatan'];
+                    $jabatan->save();
+                    break;
+                case 'edit-jabatan':
+                    $jabatan = Jabatan::find($data['id_nama_jabatan']);
+                    $jabatan->nama_jabatan = $data['edit_nama_jabatan'];
+                    $jabatan->save();
+                    break;
+                case 'tambah-masa-jabatan':
+                    $masajabatan = new MasaJabatan();
+                    $masajabatan->tahun_mulai = $data['masa_jabatan_mulai'];
+                    $masajabatan->tahun_selesai = $data['masa_jabatan_selesai'];
+                    $masajabatan->status = 1;
+                    $masajabatan->save();
+                    break;
+                case 'edit-masa-jabatan':
+                    $masajabatan = MasaJabatan::find($data['id_masa_jabatan']);
+                    $masajabatan->tahun_mulai = $data['masa_jabatan_mulai'];
+                    $masajabatan->tahun_selesai = $data['masa_jabatan_selesai'];
+                    $masajabatan->status = $data['status'];
+                    $masajabatan->save();
+                    break;
+            }
+            return redirect(route('admin.perangkat.kelola'))->with('success', 'Berhasil Melakukan Aksi');
+        } catch (Exception $e) {
+            return redirect(route('admin.perangkat.kelola'))->with('danger', 'Gagal Melakukan Aksi');
+        }
+    }
+
+    public function hapusJabatan($jid){
+        try {
+            Jabatan::destroy($jid);
+            return redirect(route('admin.perangkat.kelola'))->with('success', 'Berhasil Melakukan Aksi');
+        } catch (Exception $e) {
+            return redirect(route('admin.perangkat.kelola'))->with('danger', 'Berhasil Melakukan Aksi');
+        }
+        
+    }
+
+    public function hapusMasaJabatan($mjid){
+        try {
+            MasaJabatan::destroy($mjid);
+            return redirect(route('admin.perangkat.kelola'))->with('success', 'Berhasil Melakukan Aksi');
+        } catch (Exception $e) {
+            return redirect(route('admin.perangkat.kelola'))->with('danger', 'Berhasil Melakukan Aksi');
+        }
+        
     }
 
     public function jabatan(Request $request){

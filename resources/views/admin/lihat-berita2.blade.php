@@ -22,7 +22,7 @@
 
     <section class="inner-page">
       <div class="container">
-      <img style="object-position: center;" src="/userfiles/images/{{$berita->gambar}}" class="card-img-top mb-5">
+      <img style="object-position: center;height: 50%;width: 50%" src="/userfiles/images/{{$berita->gambar}}" class="card-img-top mb-5">
           {!! $berita->isi_berita !!}
         
       </div>

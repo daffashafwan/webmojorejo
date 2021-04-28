@@ -6,7 +6,7 @@
             <a href="{{url()->previous()}}" class="text-white btn btn-secondary"><i class="fas fa-arrow-alt-circle-left"></i></a>
         </div>
         <div class="block-content block-content-full">
-            <div class="block-content block-content-full text-center bg-image" style="max-height: 50%; background-image: url({{url('userfiles/images/'.$berita->gambar)}});">
+            <div class="block-content block-content-full text-center bg-image" style="max-height: 10%; background-image: url({{url('userfiles/images/'.$berita->gambar)}});">
                 <div class="content content-full overflow-hidden">
                     <div class="my-8 text-center">
                         <div style="background-color:rgba(0, 0, 0, 0.5)">
