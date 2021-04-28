@@ -45,24 +45,16 @@
         <ul>
           <li class="active"><a href="/">Home</a></li>
           <li><a href="#about">Tentang Desa</a></li>
-          <li><a href="#services">Pelayanan</a></li>
           <li><a href="#portfolio">Galeri</a></li>
           <li><a href="#team">Perangkat</a></li>
-          <li class="drop-down"><a href="">Drop Down</a>
+          <li class="drop-down"><a href="">Pelayanan</a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="drop-down"><a href="#">Deep Drop Down</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+            <li><a href="#services">Layanan Pendaftaran Kartu Keluarga</a></li>
+                  <li><a href="#services">Layanan Pengurusan Kartu Tanda Penduduk</a></li>
+                  <li><a href="#services">Layanan Pengurusan Akta Kelahiran</a></li>
+                  <li><a href="#services">Layanan Pengurusan Akta Kematian</a></li>
+                  <li><a href="#services">Layanan Pengurusan Surat Pernyataan Kematian</a></li>
+                  <li><a href="#services">Layanan Pengurusan Keramaian</a></li>
             </ul>
           </li>
           <li><a href="#contact">Kontak</a></li>
@@ -205,41 +197,7 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
       </div>
     </section>End Features Section -->
 
-    <section id="services" class="services">
-    <div class="container" data-aos="fade-up">
 
-    <div class="section-title">
-          <h2>Berita</h2>
-          <p>Portal Berita Desa Mojorejo</p>
-        </div>
-
-        
-        <div class="row flex-items-xs-middle flex-items-xs-center">
-            @foreach ($berita as $post)
-            <div class="col-xs-12 col-lg-4">
-            <div class="icon-box" style="margin-bottom: 20px;">
-                
-                    <img src="userfiles/images/{{$post->gambar}}" class="card-img-top"
-                            style="height: 275px; object-fit: cover; object-position: center;" alt="">
-                
-                    <div class="card-block mt-3">
-                        
-                        <h4 style="padding-top:20px;"><a href="{{route('berita.lihat-berita2', ['id'=>$post->id])}}">{{$post->judul_berita}}</a></h4>
-                        {!! Str::limit($post->isi_berita, 100) !!}
-                        <div class="text-center" style="padding-top:20px;"><a href="/post/{{$post->id}}" style="background: #ffc451; border: 0; padding: 10px 24px; color: #151515; transition: 0.4s; border-radius: 4px;">Selengkapnya</a></div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-
-        {{-- <div class="row mt-5 d-flex justify-content-center">
-                    <div class="card pb-0">
-                    <a href="#" class="btn">Semua Berita</a>
-                    </div>
-                </div> --}}
-    </div>
-</section>
 
         <!-- ======= Services Section 2 ======= -->
         <section id="services" class="services">
@@ -303,6 +261,80 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
 
       </div>
   
+
+    <section id="services" class="services">
+    <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+          <h2>Berita</h2>
+          <p>Portal Berita Desa Mojorejo</p>
+          <a href="" style="visibility: <?php echo(count($berita) > 6) ? 'visible' : 'hidden'?>">lihat selengkapnya</a>
+        </div>
+
+        
+        <div class="row flex-items-xs-middle flex-items-xs-center">
+            
+            @for ($i = 0; $i < min(6, count($berita)); $i++)
+                
+            
+            <div class="col-xs-12 col-lg-4">
+            <div class="icon-box" style="margin-bottom: 20px;">
+                
+                    <img src="{{url('userfiles/images/'.$berita[$i]['gambar'])}}" class="card-img-top"
+                            style="height: 275px; object-fit: cover; object-position: center;" alt="">
+                
+                    <div class="card-block mt-3">      
+                        <h4 style="padding-top:20px;"><a href="{{route('berita.lihat-berita2', ['id'=>$berita[$i]->id])}}">{{$berita[$i]->judul_berita}}</a></h4>
+                        {!! Str::limit($berita[$i]->isi_berita, 100) !!}
+                        <div class="text-center" style="padding-top:20px;"><a href="/post/{{$berita[$i]->id}}" style="background: #ffc451; border: 0; padding: 10px 24px; color: #151515; transition: 0.4s; border-radius: 4px;">Selengkapnya</a></div>
+                    </div>
+                </div>
+            </div>
+            @endfor
+        </div>
+
+        {{-- <div class="row mt-5 d-flex justify-content-center">
+                    <div class="card pb-0">
+                    <a href="#" class="btn">Semua Berita</a>
+                    </div>
+                </div> --}}
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
@@ -657,6 +689,108 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
             <div class="member" data-aos="fade-up" data-aos-delay="400">
               <div class="member-img">
                 <img src="{{asset('assets/img/team/team-4.jpg')}}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>

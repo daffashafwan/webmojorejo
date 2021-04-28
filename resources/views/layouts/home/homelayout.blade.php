@@ -45,24 +45,16 @@
         <ul>
           <li class="active"><a href="index.html">Home</a></li>
           <li><a href="/#about">Tentang Desa</a></li>
-          <li><a href="/#services">Pelayanan</a></li>
           <li><a href="/#portfolio">Galeri</a></li>
           <li><a href="/#team">Perangkat</a></li>
-          <li class="drop-down"><a href="">Drop Down</a>
+          <li class="drop-down"><a href="">Pelayanan</a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="drop-down"><a href="#">Deep Drop Down</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+            <li><a href="#services">Layanan Pendaftaran Kartu Keluarga</a></li>
+                  <li><a href="#services">Layanan Pengurusan Kartu Tanda Penduduk</a></li>
+                  <li><a href="#services">Layanan Pengurusan Akta Kelahiran</a></li>
+                  <li><a href="#services">Layanan Pengurusan Akta Kematian</a></li>
+                  <li><a href="#services">Layanan Pengurusan Surat Pernyataan Kematian</a></li>
+                  <li><a href="#services">Layanan Pengurusan Keramaian</a></li>
             </ul>
           </li>
           <li><a href="/#contact">Kontak</a></li>

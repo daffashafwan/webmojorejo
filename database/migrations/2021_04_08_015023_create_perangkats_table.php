@@ -19,6 +19,7 @@ class CreatePerangkatsTable extends Migration
             $table->string('jabatan');
             $table->string('masa_jabatan');
             $table->string('foto');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

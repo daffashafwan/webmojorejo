@@ -26,26 +26,42 @@ Route::get('/kritikdansaran', [CurhatDesaController::class, 'index'])->name('c')
 Route::get('/kritikdansaran', [CurhatDesaController::class, 'createCurhat']);
 Route::post('/kritikdansaran', [CurhatDesaController::class, 'CurhatForm'])->name('curhatdesa.store');
 
-Route::prefix('admin')->group(function(){
-    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-    Route::prefix('berita')->group(function(){
-        Route::get('/', [AdminController::class, 'berita'])->name('admin.berita.index');
-        Route::prefix('tambah-berita')->group(function(){
-            Route::get('/', [AdminController::class, 'tambahBerita'])->name('admin.berita.tambah');
-            Route::post('/store', [AdminController::class, 'store'])->name('admin.berita.tambah.store');
+//Route::get('/admin', [AuthController::class, 'showFormLogin'])->name('login');
+// Route::get('/login', [AuthController::class, 'showFormLogin'])->name('login');
+// Route::post('/login', [AuthController::class, 'login']);
+
+
+Route::group(['prefix' => 'admin','middleware' => ['auth:sanctum', 'verified']], function() {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+        Route::prefix('berita')->group(function(){
+            Route::get('/', [AdminController::class, 'berita'])->name('admin.berita.index');
+            Route::prefix('tambah-berita')->group(function(){
+                Route::get('/', [AdminController::class, 'tambahBerita'])->name('admin.berita.tambah');
+                Route::post('/store', [AdminController::class, 'store'])->name('admin.berita.tambah.store');
+            });
+            Route::get('lihat-berita/{id}', [AdminController::class, 'lihatBerita'])->name('admin.berita.lihat-berita');
+            Route::prefix('edit/{id}')->group(function(){
+                Route::get('/', [AdminController::class, 'editBerita'])->name('admin.berita.edit');
+                Route::post('/post', [AdminController::class, 'editBeritaPost'])->name('admin.berita.edit.post');
+            });
+            Route::post('/ubah-status', [AdminController::class, 'ubahStatusBerita'])->name('admin.berita.ubah-status');
+            Route::delete('delete/{id}', [AdminController::class, 'hapusBerita'])->name('admin.berita.hapus');
         });
-        Route::get('lihat-berita/{id}', [AdminController::class, 'lihatBerita'])->name('admin.berita.lihat-berita');
-        Route::prefix('edit/{id}')->group(function(){
-            Route::get('/', [AdminController::class, 'editBerita'])->name('admin.berita.edit');
-            Route::post('/post', [AdminController::class, 'editBeritaPost'])->name('admin.berita.edit.post');
+        Route::prefix('perangkat')->group(function(){
+            Route::get('/', [AdminController::class, 'perangkat'])->name('admin.perangkat.index');
+            Route::prefix('kelola')->group(function(){
+                Route::get('/', [AdminController::class, 'kelola'])->name('admin.perangkat.kelola');
+                Route::post('/post', [AdminController::class, 'postKelola'])->name('admin.perangkat.kelola.post');
+                Route::delete('/delete-jabatan/{id}', [AdminController::class, 'hapusJabatan'])->name('admin.perangkat.jabatan.hapus');
+                Route::delete('/delete-masa-jabatan/{id}', [AdminController::class, 'hapusMasaJabatan'])->name('admin.perangkat.masa.jabatan.hapus');
+            });
         });
-        Route::delete('delete/{id}', [AdminController::class, 'hapusBerita'])->name('admin.berita.hapus');
-    });
-    
 });
+
 
 Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
     ->name('ckfinder_connector');
 
 Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')
     ->name('ckfinder_browser');
+
