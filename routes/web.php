@@ -22,9 +22,9 @@ Route::get('post/{id}', [AdminController::class, 'lihatBerita2'])->name('berita.
 
 Route::post('/', [ContactUsFormController::class, 'ContactUsForm'])->name('index.contact.store');
 
-Route::get('/curhatdesa', [CurhatDesaController::class, 'index'])->name('c');
-Route::get('/curhatdesa', [CurhatDesaController::class, 'createCurhat']);
-Route::post('/curhatdesa', [CurhatDesaController::class, 'CurhatForm'])->name('curhatdesa.store');
+Route::get('/kritikdansaran', [CurhatDesaController::class, 'index'])->name('c');
+Route::get('/kritikdansaran', [CurhatDesaController::class, 'createCurhat']);
+Route::post('/kritikdansaran', [CurhatDesaController::class, 'CurhatForm'])->name('curhatdesa.store');
 
 Route::prefix('admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');

@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class CurhatDesaController extends Controller
 {
 	public function index(){
-        return view('curhatdesa');
+        return view('kritikdansaran');
     }
 	public function createCurhat(Request $request) {
-      return view('curhatdesa');
+      return view('kritikdansaran');
     }
 
     // Store CurhatDesa Form data

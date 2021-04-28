@@ -141,7 +141,6 @@ Timur. Desa Mojorejo memiliki 2 Dusun yaitu :
             <ul>
               <li><i class="ri-check-double-line"></i>  Dusun Ngandat.</li>
               <li><i class="ri-check-double-line"></i> Dusun Kajang.</li>
-             
             </ul>
             <p>
             Desa Mojorejo memiliki letak geografis yang cukup menguntungkan dan cukup
@@ -310,9 +309,9 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
       <div class="container" data-aos="zoom-in">
 
         <div class="text-center">
-          <h3>Curhat Desa</h3>
-          <p> Curhat Desa merupakan media aspirasi untuk warga Desa Mojorejo Kota Batu dalam menyampaikan kritik dan saran mengenai keluhan tentang semua permasalahan yang ada di Desa Mojorejo.</p>
-          <a class="cta-btn" href="/curhatdesa">Curhat Desa</a>
+          <h3>Kritik dan Saran</h3>
+          <p> Media aspirasi untuk warga Desa Mojorejo Kota Batu dalam menyampaikan kritik dan saran mengenai keluhan tentang semua permasalahan yang ada di Desa Mojorejo.</p>
+          <a class="cta-btn" href="/kritikdansaran">Kritik dan Saran</a>
         </div>
 
       </div>
