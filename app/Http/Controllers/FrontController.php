@@ -24,5 +24,10 @@ class FrontController extends Controller
         return view('admin.lihat-berita2', compact('berita'));
     }
 
+    public function berita(){
+        $berita = Berita::latest()->where('status', 'Aktif')->get();
+        return view('berita');
+    }
+
 
 }

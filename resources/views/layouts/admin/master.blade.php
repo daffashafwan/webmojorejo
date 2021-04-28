@@ -185,7 +185,7 @@
             <div class="content-side content-side-full">
                 <ul class="nav-main">
                     <li class="nav-main-item">
-                        <a class="nav-main-link active" href="be_pages_dashboard.html">
+                        <a class="nav-main-link active" href="{{route('admin.index')}}">
                             <i class="nav-main-link-icon si si-speedometer"></i>
                             <span class="nav-main-link-name">Dashboard</span>
                         </a>

@@ -21,7 +21,7 @@ Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::get('post/{id}', [FrontController::class, 'lihatBerita'])->name('berita.lihat-berita2');
 
 Route::post('/', [ContactUsFormController::class, 'ContactUsForm'])->name('index.contact.store');
-
+Route::get('berita', [FrontController::class, 'berita'])->name('berita');
 Route::get('/kritikdansaran', [CurhatDesaController::class, 'index'])->name('c');
 Route::get('/kritikdansaran', [CurhatDesaController::class, 'createCurhat']);
 Route::post('/kritikdansaran', [CurhatDesaController::class, 'CurhatForm'])->name('curhatdesa.store');
