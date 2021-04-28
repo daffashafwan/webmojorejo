@@ -74,7 +74,7 @@
                                     <input id="nama_perangkat" name="nama_perangkat" type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="jabatan">Silahkan Pilih Jabatan</label>
+                                    <label for="jabatan">Silahkan Pilih Jabatan <a href="{{route('admin.perangkat.kelola')}}">Kelola Jabatan</a></label>
                                     <select class="form-control" id="jabatan" name="jabatan">
                                         <option value="0">Pilih salah satu</option>
                                         @foreach ($jabatan as $j)
@@ -83,7 +83,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jabatan">Silahkan Pilih Masa Jabatan</label>
+                                    <label for="jabatan">Silahkan Pilih Masa Jabatan <a href="{{route('admin.perangkat.kelola')}}">Kelola Masa Jabatan</a></label>
                                     <select class="form-control" id="jabatan" name="jabatan">
                                         <option value="0">Pilih salah satu</option>
                                         @foreach ($masa_jabatan as $mj)
