@@ -34,16 +34,28 @@
                         <td class="text-center font-size-sm">{{$loop->iteration}}</td>
                         <td class="font-w600 font-size-sm">{{$p->nama_perangkat}}</td>
                         <td class="d-none d-sm-table-cell font-size-sm">
-                            {{$p->jabatan}}
+                            {{$p->Jabatan->nama_jabatan}}
                         </td>
                         <td>
-                            <em class="text-muted font-size-sm">{{$p->masa_jabatan}}</em>
+                            <em class="text-muted font-size-sm">{{$p->MasaJabatan->tahun_mulai}} - {{$p->MasaJabatan->tahun_selesai}}</em>
                         </td>
                         <td class="d-none d-sm-table-cell">
-                            <span class="badge badge-<?php echo(($p->status == 1) ? 'success' : 'danger') ?>"><?php echo(($p->status == 1) ? 'Aktif' : 'Tidak Aktif') ?></span>
+                            <form action="{{route('admin.berita.ubah-status-perangkat')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$p->id}}">
+                                <input value="<?php echo(($p->status == 1) ? 'aktif' : 'tidak aktif') ?>" type="hidden" name="gantistatus" id="">
+                                <button class="badge form-control btn badge-<?php echo(($p->status == 1) ? 'success' : 'danger') ?>" type="submit"><?php echo(($p->status == 1) ? 'Aktif' : 'Tidak Aktif')?></button>
+                            </form>
                         </td>
                         <td>
-                            <em class="text-muted font-size-sm">4 days ago</em>
+                            <div class="btn-group mr-2 mb-2" role="group" aria-label="Icons Text group">
+                                <a type="button" class="text-white btn btn-primary">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                                <a pid="{{$p->id}}" data-toggle="modal" data-target="#modal-hapus-perangkat-popout" type="button" class="modal-hapus-perangkat-popout text-white btn btn-danger">
+                                    <i class="fa fa-fw fa-trash"></i>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
@@ -65,7 +77,7 @@
                             </button>
                         </div>
                     </div>
-                    <form enctype="multipart/form-data" action="" method="POST">
+                    <form enctype="multipart/form-data" action="{{route('admin.perangkat.post')}}" method="POST">
                         @csrf
                         <input type="hidden" name="action" value="tambah">
                         <div class="block-content font-size-sm form-group">
@@ -84,11 +96,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="jabatan">Silahkan Pilih Masa Jabatan <a href="{{route('admin.perangkat.kelola')}}">Kelola Masa Jabatan</a></label>
-                                    <select class="form-control" id="jabatan" name="jabatan">
+                                    <select class="form-control" id="jabatan" name="masa_jabatan">
                                         <option value="0">Pilih salah satu</option>
                                         @foreach ($masa_jabatan as $mj)
                                         <option value="{{$mj->id}}">{{$mj->tahun_mulai}} - {{$mj->tahun_selesai}}</option>
                                         @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="jabatan" name="status">
+                                        <option selected value="1">Aktif</option>
+                                        <option value="0">Tidak Aktif</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -118,9 +136,10 @@
         </div>
     </div>
     <!-- END Pop Out Block Modal -->
+    
 
     <!-- Pop Out Block Modal -->
-    <div class="modal fade" id="modal-hapus-jabatan-popout" tabindex="-1" role="dialog" aria-labelledby="modal-hapus-jabatan-popout" aria-hidden="true">
+    <div class="modal fade" id="modal-hapus-perangkat-popout" tabindex="-1" role="dialog" aria-labelledby="modal-hapus-perangkat-popout" aria-hidden="true">
         <div class="modal-dialog modal-dialog-popout" role="document">
             <div class="modal-content">
                 <div class="block block-themed block-transparent mb-0">
@@ -132,11 +151,11 @@
                             </button>
                         </div>
                     </div>
-                    <form id="formHapusBerita" action="" method="POST">
+                    <form id="formHapusPerangkat" action="" method="POST">
                         @method('delete')
                         @csrf
                         <div class="block-content font-size-sm form-group">
-                            <h4>Yakin ingin menghapus jabatan ini ?</h4>
+                            <h4>Yakin ingin menghapus perangkat ini ?</h4>
                         </div>
                         <div class="block-content block-content-full text-right border-top">
                             <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
@@ -162,5 +181,43 @@
 
 <!-- Page JS Code -->
 <script src="{{asset('assets/admin/js/pages/be_tables_datatables.min.js')}}"></script>
+<script>
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
+        reader.onload = function (e) {
+            $('#imageResult')
+                .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$(function () {
+    $('#upload').on('change', function () {
+        readURL(input);
+    });
+});
+
+/*  ==========================================
+    SHOW UPLOADED IMAGE NAME
+* ========================================== */
+var input = document.getElementById( 'upload' );
+var infoArea = document.getElementById( 'upload-label' );
+
+input.addEventListener( 'change', showFileName );
+function showFileName( event ) {
+  var input = event.srcElement;
+  var fileName = input.files[0].name;
+  infoArea.textContent = 'File name: ' + fileName;
+}
+</script>
+
+<script>
+    $(".modal-hapus-perangkat-popout").click(function (e) {
+        let pid = $(this).attr("pid");
+        $('#formHapusPerangkat').attr('action', '/admin/perangkat/delete-perangkat/' + pid);
+    });
+</script>
 @endsection

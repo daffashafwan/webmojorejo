@@ -41,6 +41,9 @@ Route::group(['prefix' => 'admin','middleware' => ['auth:sanctum', 'verified']],
         });
         Route::prefix('perangkat')->group(function(){
             Route::get('/', [AdminController::class, 'perangkat'])->name('admin.perangkat.index');
+            Route::post('/post', [AdminController::class, 'postPerangkat'])->name('admin.perangkat.post');
+            Route::post('/ubah-status-perangkat', [AdminController::class, 'ubahStatusPerangkat'])->name('admin.berita.ubah-status-perangkat');
+            Route::delete('/delete-perangkat/{id}', [AdminController::class, 'hapusPerangkat'])->name('admin.perangkat.hapus');
             Route::prefix('kelola')->group(function(){
                 Route::get('/', [AdminController::class, 'kelola'])->name('admin.perangkat.kelola');
                 Route::post('/post', [AdminController::class, 'postKelola'])->name('admin.perangkat.kelola.post');

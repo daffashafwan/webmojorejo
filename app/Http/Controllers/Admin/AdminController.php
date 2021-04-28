@@ -38,7 +38,7 @@ class AdminController extends Controller
     public function perangkat(){
         $masa_jabatan = MasaJabatan::all();
         $jabatan = Jabatan::all();
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::with('Jabatan', 'MasaJabatan')->get();
         return view('admin.perangkat.index', compact('perangkat', 'jabatan', 'masa_jabatan'));
     }
 
@@ -49,6 +49,47 @@ class AdminController extends Controller
         return view('admin.perangkat.kelola', compact('jabatan', 'masa_jabatan', 'perangkat'));
     }
 
+    public function postPerangkat(Request $request){
+        $data = $request->input();
+        
+        try {
+            switch ($data['action']) {
+                case 'tambah':
+                    $perangkat = new Perangkat();
+                    $perangkat->nama_perangkat = $data['nama_perangkat'];
+                    $perangkat->jabatan = $data['jabatan'];
+                    $perangkat->masa_jabatan = $data['masa_jabatan'];
+                    $perangkat->status = $data['status'];
+                    $file = $request->file('gambar');
+                    $nama_file = time()."_".$file->getClientOriginalName();
+                    $tujuan_upload = 'userfiles/images';
+                    $file->move($tujuan_upload,$nama_file);
+                    $perangkat->foto = $nama_file;
+                    $perangkat->save();
+                    $perangkat = Perangkat::create(request()->all());
+                    $perangkat->Jabatan()->create(request()->all());
+
+                    break;
+                case 'edit':
+                    $perangkat = Perangkat::find($data['id_nama_jabatan']);
+                    $perangkat->nama_jabatan = $data['edit_nama_jabatan'];
+                    $perangkat->save();
+                    break;
+            }
+            return redirect(route('admin.perangkat.index'))->with('success', 'Berhasil Melakukan Aksi');
+        } catch (Exception $e) {
+            return redirect(route('admin.perangkat.index'))->with('danger', 'Gagal Melakukan Aksi');
+        }
+    }
+
+    public function hapusPerangkat($id){
+        try {
+            Perangkat::destroy($id);
+            return redirect(route('admin.perangkat.index'))->with('success', 'Berhasil Melakukan Aksi');
+        } catch (Exception $e) {
+            return redirect(route('admin.perangkat.index'))->with('danger', 'Berhasil Melakukan Aksi');
+        }
+    }
     public function postKelola(Request $request){
         $data = $request->input();
         try {
@@ -174,6 +215,29 @@ class AdminController extends Controller
             return redirect(route('admin.berita.index'))->with('success', 'berhasil ganti status berita');
         } catch (Exception $e) {
             return redirect(route('admin.berita.index'))->with('danger', 'gagal ganti status berita');
+        }
+    }
+
+    public function ubahStatusPerangkat(Request $request){
+        $data = $request->input();
+        
+        try {
+            $perangkat = Perangkat::find($data['id']);
+            switch ($data['gantistatus']) {
+                
+                case 'aktif':
+                    $perangkat->status = 0;
+                    
+                    $perangkat->save();
+                    break;
+                case 'tidak aktif':
+                    $perangkat->status = 1;
+                    $perangkat->save();
+                    break;
+            }
+            return redirect(route('admin.perangkat.index'))->with('success', 'berhasil ganti status perangkat');
+        } catch (Exception $e) {
+            return redirect(route('admin.perangkat.index'))->with('danger', 'gagal ganti status perangkat');
         }
     }
 
