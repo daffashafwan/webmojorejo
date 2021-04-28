@@ -30,6 +30,6 @@ class CurhatDesaController extends Controller
         CurhatDesa::create($request->all());
 
         // 
-        return back()->with('Terikirim! Terimakasih sudah memberikan kritik / saran untuk Desa Mojorejo.');
+        return back()->with('success', 'Terkirim!!! Terimakasih sudah memberikan kritik dan saran untuk desa Mojorejo');
     }
 }
