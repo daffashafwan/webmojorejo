@@ -63,6 +63,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth:sanctum', 'verified']],
         });
         Route::prefix('galeri')->group(function(){
             Route::get('/', [AdminController::class, 'galeri'])->name('admin.galeri.index');
+            Route::post('/ubah-status-gambar', [AdminController::class, 'ubahStatusGambar'])->name('admin.galeri.ubah-status-gambar');
+            Route::delete('/delete-gambar/{id}', [AdminController::class, 'hapusGambar'])->name('admin.galeri.delete-gambar');
             Route::prefix('tambah')->group(function(){
                 Route::get('/', [AdminController::class, 'tambahGaleri'])->name('admin.galeri.tambah');
                 Route::post('/store', [AdminController::class, 'storeGambar'])->name('admin.galeri.tambah.store'); 

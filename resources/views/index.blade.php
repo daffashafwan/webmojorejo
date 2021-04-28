@@ -330,141 +330,27 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">Semua</li>
-              <li data-filter=".filter-app">Sosial</li>
-              <li data-filter=".filter-card">Ekonomi</li>
-              <li data-filter=".filter-web">Pemerintahan</li>
+              <li data-filter=".filter-Sosial">Sosial</li>
+              <li data-filter=".filter-Ekonomi">Ekonomi</li>
+              <li data-filter=".filter-Pariwisata">Pariwisata</li>
+              <li data-filter=".filter-Teknologi">Teknologi</li>
+              <li data-filter=".filter-Sumber_Daya">Sumber Daya</li>
             </ul>
           </div>
         </div>
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          @foreach ($galeri as $g)
+          <div class="col-lg-4 col-md-6 portfolio-item filter-{{$g->kategori}}">
             <div class="portfolio-wrap">
-              <img src="{{asset('assets/img/portfolio/portfolio-1.jpg')}}" class="img-fluid" alt="">
+              <img src="{{url('userfiles/images/galeri/'.$g->path)}}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('assets/img/portfolio/portfolio-1.jpg')}}" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+                <h4>{{$g->judul_gambar}}</h4>
+                <p>{{$g->kategori}}</p>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="{{asset('assets/img/portfolio/portfolio-2.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('assets/img/portfolio/portfolio-2.jpg')}}" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="{{asset('assets/img/portfolio/portfolio-3.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('assets/img/portfolio/portfolio-3.jpg')}}" data-gall="portfolioGallery" class="venobox" title="App 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="{{asset('assets/img/portfolio/portfolio-4.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('assets/img/portfolio/portfolio-4.jpg')}}" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="{{asset('assets/img/portfolio/portfolio-5.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('assets/img/portfolio/portfolio-5.jpg')}}" data-gall="portfolioGallery" class="venobox" title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="{{asset('assets/img/portfolio/portfolio-6.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('assets/img/portfolio/portfolio-6.jpg')}}" data-gall="portfolioGallery" class="venobox" title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="{{asset('assets/img/portfolio/portfolio-7.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('assets/img/portfolio/portfolio-7.jpg')}}" data-gall="portfolioGallery" class="venobox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="{{asset('assets/img/portfolio/portfolio-8.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('assets/img/portfolio/portfolio-8.jpg')}} " data-gall="portfolioGallery" class="venobox" title="Card 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="{{asset('assets/img/portfolio/portfolio-9.jpg')}}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="{{asset('assets/img/portfolio/portfolio-9.jpg')}}" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          @endforeach
         </div>
 
       </div>
@@ -529,8 +415,8 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
         <div class="owl-carousel testimonials-carousel">
 
           <div class="testimonial-item">
-            <img src="{{asset('assets/img/testimonials/testimonials-1.jpg')}}" class="testimonial-img" alt="">
-            <h3>Saul Goodman</h3>
+            <img src="https://krs.umm.ac.id/Poto/2018/201810370311332.JPG" class="testimonial-img" alt="">
+            <h3>Arif Rahman Hidayatullah</h3>
             <h4>Ceo &amp; Founder</h4>
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -540,8 +426,8 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
           </div>
 
           <div class="testimonial-item">
-            <img src="{{asset('assets/img/testimonials/testimonials-2.jpg')}}" class="testimonial-img" alt="">
-            <h3>Sara Wilsson</h3>
+            <img src="https://krs.umm.ac.id/Poto/2018/201810370311339.JPG" class="testimonial-img" alt="">
+            <h3>Muhammad Putera Anami</h3>
             <h4>Designer</h4>
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -551,8 +437,8 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
           </div>
 
           <div class="testimonial-item">
-            <img src="{{asset('assets/img/testimonials/testimonials-3.jpg')}}" class="testimonial-img" alt="">
-            <h3>Jena Karlis</h3>
+            <img src="https://krs.umm.ac.id/Poto/2018/201810370311342.JPG" class="testimonial-img" alt="">
+            <h3>Muhammad Alfian Ramadhani</h3>
             <h4>Store Owner</h4>
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -562,8 +448,8 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
           </div>
 
           <div class="testimonial-item">
-            <img src="{{asset('assets/img/testimonials/testimonials-4.jpg')}}" class="testimonial-img" alt="">
-            <h3>Matt Brandon</h3>
+            <img src="https://krs.umm.ac.id/Poto/2018/201810370311365.JPG" class="testimonial-img" alt="">
+            <h3>Ahmad Alif Asy’ari Syukur</h3>
             <h4>Freelancer</h4>
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -573,8 +459,8 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
           </div>
 
           <div class="testimonial-item">
-            <img src="{{asset('assets/img/testimonials/testimonials-5.jpg')}}" class="testimonial-img" alt="">
-            <h3>John Larson</h3>
+            <img src="https://krs.umm.ac.id/Poto/2018/201810370311370.JPG" class="testimonial-img" alt="">
+            <h3>Moch. Daffa Shafwan Chairullah</h3>
             <h4>Entrepreneur</h4>
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -602,13 +488,13 @@ Home industri juga tumbuh di desa ini antara lain pembuatan kripik kentang, krip
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
-                <img src="{{asset('assets/img/team/team-1.jpg')}}" class="img-fluid" alt="">
-                <div class="social">
+                <img src="{{url('userfiles/images/'.$p->foto)}}" class="img-fluid" alt="">
+                {{-- <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>
                   <a href=""><i class="icofont-instagram"></i></a>
                   <a href=""><i class="icofont-linkedin"></i></a>
-                </div>
+                </div> --}}
               </div>
               <div class="member-info">
                 <h4>{{$p->nama_perangkat}}</h4>

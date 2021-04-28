@@ -97,6 +97,16 @@ class AdminController extends Controller
             return redirect(route('admin.perangkat.index'))->with('danger', 'Berhasil Melakukan Aksi');
         }
     }
+
+    public function hapusGambar($id){
+        try {
+            Galeri::destroy($id);
+            return redirect(route('admin.galeri.index'))->with('success', 'Berhasil Melakukan Aksi');
+        } catch (Exception $e) {
+            return redirect(route('admin.galeri.index'))->with('danger', 'Berhasil Melakukan Aksi');
+        }
+    }
+
     public function postKelola(Request $request){
         $data = $request->input();
         try {
@@ -222,6 +232,26 @@ class AdminController extends Controller
             return redirect(route('admin.berita.index'))->with('success', 'berhasil ganti status berita');
         } catch (Exception $e) {
             return redirect(route('admin.berita.index'))->with('danger', 'gagal ganti status berita');
+        }
+    }
+
+    public function ubahStatusGambar(Request $request){
+        $data = $request->input();
+        try {
+            $gambar = Galeri::find($data['id']);
+            switch ($data['gantistatus']) {
+                case '1':
+                    $gambar->status = 'Tidak Aktif';
+                    $gambar->save();
+                    break;
+                case '0':
+                    $gambar->status = 'Aktif';
+                    $gambar->save();
+                    break;
+            }
+            return redirect(route('admin.galeri.index'))->with('success', 'berhasil ganti status gambar');
+        } catch (Exception $e) {
+            return redirect(route('admin.galeri.index'))->with('danger', 'gagal ganti status gambar');
         }
     }
 

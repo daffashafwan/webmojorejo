@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use Illuminate\Http\Request;
 use App\Models\Perangkat;
+use App\Models\Galeri;
 use App\Models\Jabatan;
 use App\Models\MasaJabatan;
 
@@ -14,7 +15,8 @@ class FrontController extends Controller
         $masa_jabatan = MasaJabatan::all();
         $jabatan = Jabatan::all();
         $perangkat = Perangkat::where('status', 1)->get();
-        return view('index', compact('berita', 'masa_jabatan', 'jabatan', 'perangkat'));
+        $galeri = Galeri::where('status', 'Aktif')->get();
+        return view('index', compact('berita', 'masa_jabatan', 'jabatan', 'perangkat','galeri'));
     }
 
     public function lihatBerita($id){

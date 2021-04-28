@@ -25,7 +25,14 @@
                     <label class="col-form-label" for="judul_gambar">Judul Gambar</label>
                     <input type="text" class="form-control" name="judul_gambar" id="judul_gambar">
                     <label class="col-form-label" for="kategori">Kategori Gambar</label>
-                    <input type="text" class="form-control" name="kategori" id="kategori">
+                    <select class="form-control" name="kategori" id="kategori">
+                        <option value="Sosial">Sosial</option>
+                        <option value="Ekonomi">Ekonomi</option>
+                        <option value="Politik">Politik</option>
+                        <option value="Pariwisata">Pariwisata</option>
+                        <option value="Teknologi">Teknologi</option>
+                        <option value="Sumber_Daya">Sumber Daya</option>
+                    </select>
                     <div class="btn-group mr-2 mb-2 mt-2" role="group" aria-label="Icons Text group">
                         <a href="{{url()->previous()}}"class="btn btn-secondary">
                             <i class="fa fa-fw fa-arrow-alt-circle-left"></i>
