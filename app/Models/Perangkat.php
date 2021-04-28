@@ -11,11 +11,5 @@ class Perangkat extends Model
     use HasFactory;
     protected $table = 'perangkats';
 
-    public function Jabatan(){
-        return $this->belongsTo(Jabatan::class, 'id');
-    }
-
-    public function MasaJabatan(){
-        return $this->hasOne(MasaJabatan::class, 'id');
-    }
+    
 }

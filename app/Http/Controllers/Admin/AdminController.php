@@ -38,7 +38,7 @@ class AdminController extends Controller
     public function perangkat(){
         $masa_jabatan = MasaJabatan::all();
         $jabatan = Jabatan::all();
-        $perangkat = Perangkat::with('Jabatan', 'MasaJabatan')->get();
+        $perangkat = Perangkat::all();
         return view('admin.perangkat.index', compact('perangkat', 'jabatan', 'masa_jabatan'));
     }
 
@@ -51,7 +51,6 @@ class AdminController extends Controller
 
     public function postPerangkat(Request $request){
         $data = $request->input();
-        
         try {
             switch ($data['action']) {
                 case 'tambah':
@@ -66,9 +65,7 @@ class AdminController extends Controller
                     $file->move($tujuan_upload,$nama_file);
                     $perangkat->foto = $nama_file;
                     $perangkat->save();
-                    $perangkat = Perangkat::create(request()->all());
-                    $perangkat->Jabatan()->create(request()->all());
-
+                    //dd($perangkat);
                     break;
                 case 'edit':
                     $perangkat = Perangkat::find($data['id_nama_jabatan']);

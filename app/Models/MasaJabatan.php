@@ -12,13 +12,5 @@ class MasaJabatan extends Model
     protected $table = 'masa_jabatans';
     protected $guarded = [];
 
-    protected $fillable = [
-        'tahun_mulai',
-        'tahun_selesai',
-        'status',
-    ];
-
-    public function Perangkat(){
-        return $this->hasMany(Perangkat::class, 'id');
-    }
+    
 }

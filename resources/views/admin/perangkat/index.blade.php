@@ -34,10 +34,10 @@
                         <td class="text-center font-size-sm">{{$loop->iteration}}</td>
                         <td class="font-w600 font-size-sm">{{$p->nama_perangkat}}</td>
                         <td class="d-none d-sm-table-cell font-size-sm">
-                            {{$p->Jabatan->nama_jabatan}}
+                            {{$p->jabatan}}
                         </td>
                         <td>
-                            <em class="text-muted font-size-sm">{{$p->MasaJabatan->tahun_mulai}} - {{$p->MasaJabatan->tahun_selesai}}</em>
+                            <em class="text-muted font-size-sm">{{$p->masa_jabatan}}</em>
                         </td>
                         <td class="d-none d-sm-table-cell">
                             <form action="{{route('admin.berita.ubah-status-perangkat')}}" method="POST">
@@ -59,6 +59,8 @@
                         </td>
                     </tr>
                     @endforeach
+                    
+                    
                 </tbody>
             </table>
         </div>
@@ -90,7 +92,7 @@
                                     <select class="form-control" id="jabatan" name="jabatan">
                                         <option value="0">Pilih salah satu</option>
                                         @foreach ($jabatan as $j)
-                                        <option value="{{$j->id}}">{{$j->nama_jabatan}}</option>
+                                        <option value="{{$j->nama_jabatan}}">{{$j->nama_jabatan}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -99,7 +101,7 @@
                                     <select class="form-control" id="jabatan" name="masa_jabatan">
                                         <option value="0">Pilih salah satu</option>
                                         @foreach ($masa_jabatan as $mj)
-                                        <option value="{{$mj->id}}">{{$mj->tahun_mulai}} - {{$mj->tahun_selesai}}</option>
+                                        <option value="{{$mj->tahun_mulai}} - {{$mj->tahun_selesai}}">{{$mj->tahun_mulai}} - {{$mj->tahun_selesai}}</option>
                                         @endforeach
                                     </select>
                                 </div>
